@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
         <receiver android:name="com.varos.todolist.receivers.NotificationReceiver"
-            android:enabled="true">
+            android:enabled="true"
+            android:permission="@string/notification">
             <intent-filter>
                 <action android:name="com.varos.todolist.notify" />
             </intent-filter>

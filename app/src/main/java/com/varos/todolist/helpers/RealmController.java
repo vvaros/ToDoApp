@@ -25,6 +25,9 @@ public class RealmController {
     private static final String ID = "id";
     private static final String PASSWORD = "password";
     private static final String USER_NAME = "userName";
+    private static final String TITLE = "title";
+    private static final String DESCRIPTION = "description";
+    private static final String ACTION = "com.varos.todolist.notify";
     @SuppressLint("StaticFieldLeak")
     private static RealmController instance;
     private final Realm realm;
@@ -170,10 +173,11 @@ public class RealmController {
 
     private void setNotification(NoteItem noteItem) {
         Intent intent = new Intent(context, NotificationReceiver.class);
+        intent.putExtra(TITLE, noteItem.getTitle());
+        intent.putExtra(DESCRIPTION, noteItem.getDescription());
+        intent.putExtra(ID, noteItem.getId());
+        intent.setAction(ACTION);
         PendingIntent sender = PendingIntent.getBroadcast(context, noteItem.getId(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        intent.putExtra("title", noteItem.getTitle());
-        intent.putExtra("description", noteItem.getDescription());
-        intent.putExtra("id", noteItem.getId());
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, noteItem.getDate().getTime(), sender);
     }
