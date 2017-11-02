@@ -108,7 +108,7 @@ public class NoteCreateFragment extends Fragment {
             dateChanged = noteItem.getDate().isDateChanged();
             notificationChecked = noteItem.isNotificationEnabled();
             noteItem.getDate().initCalendar(calendar);
-            if(calendar.getTimeInMillis() < System.currentTimeMillis()){
+            if (calendar.getTimeInMillis() < System.currentTimeMillis()) {
                 overdue = true;
                 notificationChecked = false;
             }
@@ -130,9 +130,9 @@ public class NoteCreateFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(charSequence.length() == 30){
+                if (charSequence.length() == 30) {
                     titleEditText.setError(getString(R.string.title_max_char_count));
-                    Toast.makeText(getActivity(),R.string.title_max_char_count,Toast.LENGTH_LONG);
+                    Toast.makeText(getActivity(), R.string.title_max_char_count, Toast.LENGTH_LONG);
                 }
             }
 
@@ -154,9 +154,9 @@ public class NoteCreateFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(charSequence.length() == 30){
+                if (charSequence.length() == 30) {
                     descriptionEditText.setError(getString(R.string.description_max_char_Count));
-                    Toast.makeText(getActivity(),R.string.description_max_char_Count,Toast.LENGTH_LONG);
+                    Toast.makeText(getActivity(), R.string.description_max_char_Count, Toast.LENGTH_LONG);
                 }
             }
 
@@ -299,7 +299,7 @@ public class NoteCreateFragment extends Fragment {
             view.findViewById(R.id.note_delete_button).setVisibility(View.VISIBLE);
         }
 
-        if(overdue){
+        if (overdue) {
             overdueText.setVisibility(View.VISIBLE);
             mSwitch.setEnabled(false);
             mSwitch.setChecked(false);
@@ -358,19 +358,32 @@ public class NoteCreateFragment extends Fragment {
 
     private void openDateChooser() {
         hideKeyboard();
-        calendar = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener ondate = new DatePickerDialog.OnDateSetListener() {
 
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
                 dateChanged = true;
-                calendar.set(year, monthOfYear, dayOfMonth);
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, monthOfYear);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 dateText.setText(RealmDate.getDateInfo(calendar));
                 dateCancelButton.setVisibility(View.VISIBLE);
-                mSwitch.setChecked(false);
-                mSwitch.setEnabled(false);
                 timePickerButton.setEnabled(true);
                 timeText.setClickable(true);
+                if (calendar.getTimeInMillis() > System.currentTimeMillis()) {
+                    overdue = false;
+                    overdueText.setVisibility(View.GONE);
+                    if (timeChanged) {
+                        mSwitch.setEnabled(true);
+                    }
+                } else {
+                    if (timeChanged) {
+                        overdue = true;
+                        overdueText.setVisibility(View.VISIBLE);
+                    }
+                    mSwitch.setChecked(false);
+                    mSwitch.setEnabled(false);
+                }
             }
         };
         DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), ondate, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
@@ -393,7 +406,7 @@ public class NoteCreateFragment extends Fragment {
                     mSwitch.setEnabled(true);
                     overdue = false;
                     overdueText.setVisibility(View.GONE);
-                }else {
+                } else {
                     mSwitch.setEnabled(false);
                     mSwitch.setChecked(false);
                     overdue = true;
@@ -429,7 +442,7 @@ public class NoteCreateFragment extends Fragment {
         noteItem.setNotificationEnabled(mSwitch.isChecked());
         noteItem.setColor(color);
         noteItem.setOverdue(overdue);
-        if(overdue){
+        if (overdue) {
             noteItem.setNotificationEnabled(false);
         }
         if (editMode) {
@@ -474,7 +487,7 @@ public class NoteCreateFragment extends Fragment {
         outState.putSerializable("calendar", calendar);
         outState.putBoolean("dateChanged", dateChanged);
         outState.putBoolean("timeChanged", timeChanged);
-        outState.putBoolean("overdue",overdue);
+        outState.putBoolean("overdue", overdue);
     }
 
     @Override
