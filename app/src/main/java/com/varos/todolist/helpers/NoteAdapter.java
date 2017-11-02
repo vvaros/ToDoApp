@@ -55,9 +55,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         }
         if (mNoteItems.get(position).isNotificationEnabled()) {
             holder.mNotificationImv.setVisibility(View.VISIBLE);
+            holder.mOverdueImv.setVisibility(View.GONE);
         }
         if (mNoteItems.get(position).isOverdue()) {
             holder.mOverdueImv.setVisibility(View.VISIBLE);
+            holder.mNotificationImv.setVisibility(View.GONE);
         }
     }
 

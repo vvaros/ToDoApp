@@ -28,6 +28,7 @@ public class RealmController {
     private static final String TITLE = "title";
     private static final String DESCRIPTION = "description";
     private static final String ACTION = "com.varos.todolist.notify";
+
     @SuppressLint("StaticFieldLeak")
     private static RealmController instance;
     private final Realm realm;
@@ -136,7 +137,6 @@ public class RealmController {
                         notes.get(i).setOverdue(true);
                         notes.get(i).setNotificationEnabled(false);
                         realm.commitTransaction();
-                        cancelNotifications(notes.get(i));
                     } else {
                         setNotification(notes.get(i));
                     }
@@ -185,6 +185,7 @@ public class RealmController {
 
     private void cancelNotifications(NoteItem noteItem) {
         Intent intent = new Intent(context, NotificationReceiver.class);
+        intent.setAction(ACTION);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, noteItem.getId(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
