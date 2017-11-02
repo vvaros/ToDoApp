@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ToDo</string>
+    <string name="action_settings">Settings</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="save">Save</string>
+    <string name="notificate">Notificate</string>
+    <string name="password">Password</string>
+    <string name="signin">SignIn</string>
+    <string name="username">Username</string>
+    <string name="register">Register</string>
+    <string name="log_out">Log Out</string>
+    <string name="notification">Notification:</string>
+    <string name="back">Back</string>
+    <string name="delete">Delete</string>
+    <string name="string_ok">OK</string>
+    <string name="string_cancel">Cancel</string>
+    <string name="string_logout_answer">Are you want to logout?</string>
+    <string name="string_wrong_username">Wrong username or password</string>
+    <string name="min_characters_count">Minimum characters count is 6</string>
+    <string name="required_field">Required field</string>
+    <string name="username_exists">Username already exists</string>
+    <string name="discard_changes">Discard changes ?</string>
+    <string name="choose_color">Choose color</string>
+    <string name="choose_date">Choose date</string>
+    <string name="choose_time">Choose Time</string>
+    <string name="overdue">Overdue</string>
+    <string name="title_max_char_count">Max characters count is 30</string>
+    <string name="description_max_char_Count">Max characters count is 200</string>
+</resources>

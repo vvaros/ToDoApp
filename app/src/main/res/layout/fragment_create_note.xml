@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height"
+        android:background="@color/colorPrimary"
+        android:foregroundGravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/note_cancel_button"
+            android:layout_width="@dimen/square_button_size"
+            android:layout_height="@dimen/square_button_size"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/layout_padding"
+            android:background="@color/colorTransparent"
+            android:gravity="center"
+            android:src="@drawable/icon_left" />
+
+        <ImageButton
+            android:id="@+id/note_save_button"
+            android:layout_width="@dimen/square_button_size"
+            android:layout_height="@dimen/square_button_size"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/layout_padding"
+            android:layout_marginRight="@dimen/layout_padding"
+            android:layout_marginTop="@dimen/layout_padding"
+            android:background="@color/colorTransparent"
+            android:src="@drawable/icon_done" />
+
+        <ImageButton
+            android:id="@+id/note_delete_button"
+            android:layout_width="@dimen/square_button_size"
+            android:layout_height="@dimen/square_button_size"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/action_bar_height"
+            android:layout_marginRight="@dimen/action_bar_height"
+            android:background="@color/colorTransparent"
+            android:src="@drawable/icon_delete_note"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/fab_margin"
+        android:paddingLeft="@dimen/fab_margin"
+        android:paddingRight="@dimen/fab_margin"
+        android:paddingTop="@dimen/fab_margin">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/title_edit_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/layout_padding"
+                        android:hint="@string/title"
+                        android:imeOptions="actionNext"
+                        android:inputType="textImeMultiLine"
+                        android:maxLength="30"
+                        android:singleLine="true" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/description_edit_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:hint="@string/description"
+                        android:inputType="textMultiLine"
+                        android:maxLength="200" />
+                </android.support.design.widget.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/layout_padding"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5">
+
+                        <ImageView
+                            android:id="@+id/image_view_selected_color"
+                            style="@style/CreateFragmentTextView"
+                            android:clickable="true" />
+                    </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/btn_choose_image"
+                        style="@style/CreateFragmentButton"
+                        android:background="@color/colorTransparent"
+                        android:src="@drawable/icon_color" />
+
+                    <ImageButton
+                        android:id="@+id/color_chooser_cancel"
+                        style="@style/CreateFragmentButton"
+                        android:background="@color/colorTransparent"
+                        android:src="@drawable/icon_cancel"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/layout_padding"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/date_txt"
+                            style="@style/CreateFragmentTextView"
+                            android:clickable="true"
+                            android:hint="@string/choose_date" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorPrimary"></View>
+                    </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/date_chooser"
+                        style="@style/CreateFragmentButton"
+                        android:background="@color/colorTransparent"
+                        android:src="@drawable/icon_calendar" />
+
+                    <ImageButton
+                        android:id="@+id/date_chooser_cancel"
+                        style="@style/CreateFragmentButton"
+                        android:background="@color/colorTransparent"
+                        android:src="@drawable/icon_cancel"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/layout_padding"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/time_txt"
+                            style="@style/CreateFragmentTextView"
+                            android:hint="@string/choose_time" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorPrimary"></View>
+                    </LinearLayout>
+
+
+                    <ImageButton
+                        android:id="@+id/time_chooser"
+                        style="@style/CreateFragmentButton"
+                        android:background="@color/colorTransparent"
+                        android:src="@drawable/icon_time" />
+
+                    <ImageButton
+                        android:id="@+id/time_chooser_cancel"
+                        style="@style/CreateFragmentButton"
+                        android:background="@color/colorTransparent"
+                        android:src="@drawable/icon_cancel"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/layout_padding"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txt_notification"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@string/notification"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/overdue_text"
+                            style="@style/CreateFragmentTextView"
+                            android:gravity="center"
+                            android:text="@string/overdue"
+                            android:textColor="@color/colorRed"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <Switch
+                        android:id="@+id/switch_notification"
+                        style="@style/CreateFragmentButton"
+                        android:enabled="false" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>
