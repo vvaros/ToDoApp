@@ -21,9 +21,7 @@ android {
 }
 
 dependencies {
-    compile 'jp.wasabeef:recyclerview-animators:2.2.7'
     compile 'com.github.QuadFlask:colorpicker:0.0.13'
-    compile 'com.github.madrapps:pikolo:1.1.6'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'

@@ -434,7 +434,7 @@ public class NoteCreateFragment extends Fragment {
         }
         if (editMode) {
             noteItem.setId(this.noteItem.getId());
-            noteItem.setUserId(this.noteItem.getId());
+            noteItem.setUserId(this.noteItem.getUserId());
             createNoteListener.refreshNoteList(this.noteItem, noteItem);
         } else {
             createNoteListener.openNoteList(noteItem);

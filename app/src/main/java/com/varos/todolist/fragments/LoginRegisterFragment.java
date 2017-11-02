@@ -53,7 +53,7 @@ public class LoginRegisterFragment extends Fragment {
                 hideKeyboard();
 
                 if (!listener.onLoginButtonClick(String.valueOf(usernameEd.getText()),
-                        get_SHA_512_SecurePassword(String.valueOf(passwordEd.getText()), String.valueOf(usernameEd.getText())))) {
+                        getSecurePassword(String.valueOf(passwordEd.getText()), String.valueOf(usernameEd.getText())))) {
                     Toast.makeText(getActivity(), R.string.string_wrong_username, Toast.LENGTH_LONG).show();
                 }
             }
@@ -73,7 +73,7 @@ public class LoginRegisterFragment extends Fragment {
                 }
                 hideKeyboard();
                 if (!listener.onRegisterButtonClick(String.valueOf(usernameEd.getText()),
-                        get_SHA_512_SecurePassword(String.valueOf(passwordEd.getText()), String.valueOf(usernameEd.getText())))) {
+                        getSecurePassword(String.valueOf(passwordEd.getText()), String.valueOf(usernameEd.getText())))) {
                     Toast.makeText(getActivity(), R.string.username_exists, Toast.LENGTH_LONG).show();
                 }
             }
@@ -82,7 +82,7 @@ public class LoginRegisterFragment extends Fragment {
 
     }
 
-    public String get_SHA_512_SecurePassword(String passwordToHash, String salt) {
+    public String getSecurePassword(String passwordToHash, String salt) {
         String generatedPassword = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");

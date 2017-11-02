@@ -136,6 +136,7 @@ public class RealmController {
                         notes.get(i).setOverdue(true);
                         notes.get(i).setNotificationEnabled(false);
                         realm.commitTransaction();
+                        cancelNotifications(notes.get(i));
                     } else {
                         setNotification(notes.get(i));
                     }

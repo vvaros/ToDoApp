@@ -98,6 +98,10 @@ public class NoteItem extends RealmObject implements Parcelable {
         return overdue;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
     @Override
     public int describeContents() {
         return 0;
