@@ -191,7 +191,4 @@ public class RealmController {
         alarmManager.cancel(pendingIntent);
     }
 
-    public void closeRealm() {
-        realm.close();
-    }
 }

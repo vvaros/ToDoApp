@@ -210,21 +210,10 @@ public class MainActivity extends AppCompatActivity implements NoteCreateFragmen
         RealmController.getInstance().logoutUser();
     }
 
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable("mode", mode);
-    }
-
-    public enum Mode {
-        LOGIN, CREATE, LIST
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        RealmController.getInstance().closeRealm();
     }
 
     @Override
@@ -236,5 +225,9 @@ public class MainActivity extends AppCompatActivity implements NoteCreateFragmen
         } else {
             super.onBackPressed();
         }
+    }
+
+    public enum Mode {
+        LOGIN, CREATE, LIST
     }
 }
